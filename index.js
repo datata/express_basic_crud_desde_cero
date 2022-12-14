@@ -14,7 +14,7 @@ app.get('/movies', (request, response) => {
 });
 
 app.post('/movies', (request, response) => {
-    const title = request.body.name;
+    const title = request.body.title;
 
     return response.send('La pelicula que quiero guardar en bd es ' + title);
 });
@@ -24,8 +24,10 @@ app.put('/movies/:id', (request, response) => {
     return response.send('Actualizar pelicula con id: ' + movieId);
 });
 
-app.delete('/movies', (request, response) => {
-    return response.send('Eliminar pelicula');
+app.delete('/movies/:id', (request, response) => {
+    const movieId = request.params.id;
+
+    return response.send('Eliminar pelicula con id: ' + movieId);
 });
 
 app.listen(PORT, () => console.log('Server is running'));
